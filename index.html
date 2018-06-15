@@ -1,0 +1,104 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- Required meta tags always come first -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>My Neighborhood Map</title>
+      <!-- Bootstrap 4 is used -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+      <!-- Font style for heading is added-->
+      <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
+      
+   </head>
+   <body>
+      <!-- Container is taken -->
+      <div class="container-fluid h-100">
+         <h2 id = "hea">My neighbourhood Map</h2>
+         <div class="row h-100">
+            <main class="col p-0 navbar-inverse">
+            <!-- nav bar left is added -->
+               <a href class="float-left m-3 navbar-light" id = "kav" data-target="#sidebar" data-toggle="collapse">
+               <span class="navbar-toggler-icon"></span>
+               </a>
+               <div class="content bg-inverse">
+                  <!-- Content of the Map -->
+                  <div id="map">
+                     <!-- Map -->
+                     <p class="map_error"></p>
+                  </div>
+               </div>
+            </main>
+            <nav class="col-2 collapse bg-inverse pt-2 h-100 sidebar_width" id="sidebar">
+               <h4 class="app_title text-white" id = "my">My Places</h4>
+               <!-- Search Input -->
+               <input class="search" data-bind="textInput: searchOption, valueUpdate: 'afterkeydown'" placeholder="Search Locations...">
+               <hr class="sidebar_hr">
+               <ul class="nav flex-column" data-bind="foreach: mylocalitiesFilter">
+                  <a href="#">
+                     <li class="nav-item text-white location_list" id="ka" data-bind="text: title, click: $parent.populateAndBounceMarker"></li>
+                  </a>
+               </ul>
+            </nav>
+         </div>
+      </div>
+      <h1>Google Map</h1>
+      <script>
+         function mineMap() {
+           var canvasMap = document.getElementById("map");
+           var optionsMap = {
+             center: new google.maps.LatLng(17.0005383, 81.80403449999994), zoom: 12
+           };
+           var map = new google.maps.Map(canvasMap, optionsMap);
+         }
+      </script>
+      
+      <!-- script for the knockout js link is added -->
+      
+      <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js'></script>
+      <script
+         src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+      <script
+         src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+         
+         <!-- script for Bootstrap link is added -->
+         
+      <script
+         src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+         
+         <!-- Styles css file is added -->
+         <!-- css link is added -->
+         
+      <link rel="stylesheet" href="css/styles.css">
+     
+         <!-- Javascript file is added -->
+      <script
+         src="js/application.js" charset="utf-8"></script>
+         
+        
+         <!-- Google Api is added-->
+      <script async defer
+         src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyD8u-2fysys21e0Ze4UEAeSc7lea5IDNA8&callback=startApp"
+         onerror="googleError()"></script>
+         
+      <script>   
+      // Script for map and sidebar is added //
+         $(document).ready(function() {
+         function setHeight() {
+         windowHeight = $(window).innerHeight();
+         $('#map').css('min-height', windowHeight);
+         $('#sidebar').css('min-height', windowHeight);
+         };
+         setHeight();
+         
+         $(window).resize(function() {
+         setHeight();
+         });
+         });
+      </script>
+   </body>
+</html>
+
