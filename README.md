@@ -40,6 +40,6 @@ Google Maps API is used to show the map and generate the markers etc. Foursquare
 
 * Modern Web Browser
 
-## HOW TO RUN:
+## LOCAL DEVELOPMENT:
 
 * Double click the index.html to run the project in your favourite web browser.
